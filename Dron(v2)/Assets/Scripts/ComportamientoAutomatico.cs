@@ -6,47 +6,25 @@ using UnityEngine;
 public class ComportamientoAutomatico : MonoBehaviour
 {
 
-	/*private Sensores sensor;
-	private Actuadores actuador;
-
-	void Start(){
-		sensor = GetComponent<Sensores>();
-		actuador = GetComponent<Actuadores>();
-	}
-
-	void FixedUpdate () {
-		if(sensor.Bateria() <= 0)
-			return;
-
-		if (sensor.CercaDePared()) {
-			actuador.Flotar();
-			actuador.Detener();
-		} else {
-			actuador.Flotar();
-			actuador.Adelante();
-		}
-	}*/
-
 	private Sensores sensor;
 	private Actuadores actuador;
 	
 	private enum Percepcion
 	{
-		NoParedCerca	= 0,
-		ParedCerca		= 1,
-		FrentePared		= 2,
-		NoBasuraCerca	= 3,
-		BasuraCerca		= 4,
-		FrenteBasura	= 5,
-		TocandoABasura	= 6
+		CercaDePared	= 0,
+		NoCercaDePared	= 1,
+		NoBasuraCerca	= 2,
+		BasuraCerca		= 3,
+		TocandoABasura	= 4
 	}
 
 	private enum Estado
 	{
 		Avanzar		= 0,
-		Detenerse	= 1,
-		Girar		= 2,
-		Limpiar		= 3
+		Retroceder	= 1,
+		Detenerse	= 2,
+		Girar		= 3,
+		Limpiar		= 4
 	}
 
 	private Estado estadoActual;
@@ -72,6 +50,18 @@ public class ComportamientoAutomatico : MonoBehaviour
 			Debug.Log("Tocando basura!");
 			actuador.Limpiar(sensor.GetBasura());
 		}
+		
+		if(!sensor.FrenteAPared())
+			Debug.Log("No Frente a Pared!");
+
+		if(sensor.CercaDeBasura())
+			Debug.Log("Cerca de una basura!");
+		if(sensor.CercaDePared())
+			Debug.Log("Cerca de una pared!");
+
+		if(sensor.FrenteAPared())
+			Debug.Log("Frente a pared!");
+		
 	}
 
 	Estado TablaDeTransicion(Estado estado, Percepcion percepcion)
@@ -81,49 +71,58 @@ public class ComportamientoAutomatico : MonoBehaviour
 			case Estado.Avanzar:
 				switch (percepcion)
 				{
-					case Percepcion.NoParedCerca: 
-						estado = Estado.Avanzar; 
-						break; 
-					case Percepcion.ParedCerca: 
-						estado = Estado.Detenerse; 
+					case Percepcion.CercaDePared:
+						estado = Estado.Detenerse;
 						break;
-					case Percepcion.FrentePared:
-						estado = Estado.Detenerse; 
-						break;
-					case Percepcion.NoBasuraCerca: 
-						estado = Estado.Avanzar; 
+					case Percepcion.NoCercaDePared:
+						estado = Estado.Avanzar;
 						break;
 					case Percepcion.BasuraCerca: 
 						estado = Estado.Avanzar; 
 						break;
-					case Percepcion.FrenteBasura: 
+					case Percepcion.NoBasuraCerca: 
 						estado = Estado.Avanzar; 
 						break;
 					case Percepcion.TocandoABasura: 
-						estado = Estado.Limpiar; 
+						estado = Estado.Detenerse; 
 						break;
 				}
 				break;
-
+			
+			case Estado.Retroceder:
+				switch (percepcion)
+				{
+					case Percepcion.CercaDePared:
+						estado = Estado.Retroceder;
+						break;
+					case Percepcion.NoCercaDePared:
+						estado = Estado.Girar;
+						break;
+					case Percepcion.BasuraCerca:
+						estado = Estado.Avanzar;
+						break;
+					case Percepcion.NoBasuraCerca:
+						estado = Estado.Avanzar;
+						break;
+					case Percepcion.TocandoABasura:
+						estado = Estado.Detenerse;
+						break;
+				}
+				break;
+			
 			case Estado.Detenerse:
 				switch (percepcion)
 				{
-					case Percepcion.NoParedCerca:
+					case Percepcion.CercaDePared:
+						estado = Estado.Retroceder;
+						break;
+					case Percepcion.NoCercaDePared:
 						estado = Estado.Avanzar;
-						break;
-					case Percepcion.ParedCerca:
-						estado = Estado.Girar;
-						break;
-					case Percepcion.FrentePared:
-						estado = Estado.Girar;
 						break;
 					case Percepcion.NoBasuraCerca:
 						estado = Estado.Avanzar;
 						break;
 					case Percepcion.BasuraCerca:
-						estado = Estado.Avanzar;
-						break;
-					case Percepcion.FrenteBasura:
 						estado = Estado.Avanzar;
 						break;
 					case Percepcion.TocandoABasura:
@@ -134,50 +133,38 @@ public class ComportamientoAutomatico : MonoBehaviour
 
 			case Estado.Girar: 
 				switch (percepcion) 
-				{ 
-					case Percepcion.NoParedCerca:
-						estado = Estado.Avanzar; 
+				{
+					case Percepcion.CercaDePared:
+						estado = Estado.Retroceder;
 						break;
-					case Percepcion.ParedCerca: 
+					case Percepcion.NoCercaDePared:
 						estado = Estado.Avanzar;
 						break;
-					case Percepcion.FrentePared: 
+					case Percepcion.BasuraCerca: 
 						estado = Estado.Avanzar; 
 						break;
 					case Percepcion.NoBasuraCerca: 
 						estado = Estado.Avanzar; 
 						break;
-					case Percepcion.BasuraCerca: 
-						estado = Estado.Avanzar; 
-						break;
-					case Percepcion.FrenteBasura: 
-						estado = Estado.Avanzar;
-						break;
 					case Percepcion.TocandoABasura: 
-						estado = Estado.Limpiar; 
+						estado = Estado.Detenerse; 
 						break;
 				}
 				break;
 
 			case Estado.Limpiar: 
-				switch (percepcion) 
-				{ 
-					case Percepcion.NoParedCerca: 
-						estado = Estado.Avanzar; 
+				switch (percepcion)
+				{
+					case Percepcion.CercaDePared:
+						estado = Estado.Retroceder;
 						break;
-					case Percepcion.ParedCerca: 
-						estado = Estado.Avanzar; 
-						break;
-					case Percepcion.FrentePared: 
-						estado = Estado.Girar; 
-						break;
-					case Percepcion.NoBasuraCerca: 
-						estado = Estado.Avanzar; 
+					case Percepcion.NoCercaDePared:
+						estado = Estado.Avanzar;
 						break;
 					case Percepcion.BasuraCerca: 
 						estado = Estado.Avanzar; 
 						break;
-					case Percepcion.FrenteBasura: 
+					case Percepcion.NoBasuraCerca: 
 						estado = Estado.Avanzar; 
 						break;
 					case Percepcion.TocandoABasura: 
@@ -194,6 +181,12 @@ public class ComportamientoAutomatico : MonoBehaviour
 	{ 
 		actuador.Flotar();
 		actuador.Adelante();
+	}
+	
+	void Atras()
+	{
+		actuador.Flotar();
+		actuador.Atras();
 	}
 	
 	void Detenerse() 
@@ -216,19 +209,15 @@ public class ComportamientoAutomatico : MonoBehaviour
 	
 	Percepcion PercibirMundo() 
 	{ 
-		Percepcion percepcionActual = Percepcion.NoParedCerca; 
-		if (sensor.CercaDePared()) 
-			percepcionActual = Percepcion.ParedCerca;
-		else if (sensor.FrenteAPared()) 
-			percepcionActual = Percepcion.FrentePared;
-		else if (!sensor.CercaDePared()) 
-			percepcionActual = Percepcion.NoParedCerca;
+		Percepcion percepcionActual = Percepcion.NoCercaDePared;
+		if (sensor.CercaDePared())
+			percepcionActual = Percepcion.CercaDePared;
+		else if (!sensor.CercaDePared())
+			percepcionActual = Percepcion.NoCercaDePared;
 		else if (sensor.CercaDeBasura()) 
 			percepcionActual = Percepcion.BasuraCerca;
 		else if (!sensor.CercaDeBasura()) 
 			percepcionActual = Percepcion.NoBasuraCerca;
-		else if (sensor.FrenteABasura()) 
-			percepcionActual = Percepcion.FrenteBasura;
 		else
 			percepcionActual = Percepcion.TocandoABasura;
 		
@@ -241,6 +230,9 @@ public class ComportamientoAutomatico : MonoBehaviour
 		{ 
 			case Estado.Avanzar: 
 				Avanzar(); 
+				break;
+			case Estado.Retroceder:
+				Atras();
 				break;
 			case Estado.Detenerse: 
 				Detenerse(); 
