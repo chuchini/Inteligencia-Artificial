@@ -93,7 +93,7 @@ public class ComportamientoAutomatico : MonoBehaviour
 				switch (percepcion)
 				{
 					case Percepcion.CercaDePared:
-						estado = Estado.Retroceder;
+						estado = Estado.Girar;
 						break;
 					case Percepcion.NoCercaDePared:
 						estado = Estado.Girar;
