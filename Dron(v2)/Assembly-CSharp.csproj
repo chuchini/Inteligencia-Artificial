@@ -62,7 +62,6 @@
     <Compile Include="Assets\Scripts\ComportamientoAutomatico.cs" />
     <Compile Include="Assets\Scripts\ComportamientoEstados.cs" />
     <Compile Include="Assets\Scripts\Controlador.cs" />
-    <Compile Include="Assets\Scripts\ControladorObjeto.cs" />
     <Compile Include="Assets\Scripts\Radar.cs" />
     <Compile Include="Assets\Scripts\Rayo.cs" />
     <Compile Include="Assets\Scripts\Sensores.cs" />

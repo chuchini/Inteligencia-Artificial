@@ -7,7 +7,6 @@ TagManager:
   - Basura
   - Pared
   - BaseDeCarga
-  - Objeto
   layers:
   - Default
   - TransparentFX

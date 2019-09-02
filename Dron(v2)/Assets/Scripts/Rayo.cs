@@ -9,38 +9,38 @@ public class Rayo : MonoBehaviour
 {
     public float longitudDeRayo;
     private bool frenteAPared;
-    private bool frenteAObjeto;
+    private bool frenteABasura;
 
     void Update(){
         // Se muestra el rayo únicamente en la pantalla de diseño (Scene)
         Debug.DrawLine(transform.position, transform.position + (transform.forward * longitudDeRayo), Color.blue);
     }
 
-    void FixedUpdate()
-    {
+    void FixedUpdate(){
         // Similar a los métodos OnTrigger y OnCollision, se detectan colisiones con el rayo:
         RaycastHit raycastHit;
-        if (Physics.Raycast(transform.position, transform.forward, out raycastHit, longitudDeRayo))
-        {
-            if (raycastHit.collider.gameObject.CompareTag("Pared"))
+        if(Physics.Raycast(transform.position, transform.forward, out raycastHit, longitudDeRayo)){
+            if(raycastHit.collider.gameObject.CompareTag("Pared")){
                 frenteAPared = true;
-            else if (raycastHit.collider.gameObject.CompareTag("Objeto"))
-                frenteAObjeto = true;
-            else
-            {
-                frenteAPared = false;
-                frenteAObjeto = false;
             }
+
+            if (raycastHit.collider.gameObject.CompareTag("Basura"))
+            {
+                frenteABasura = true;
+            }
+        } else{
+            frenteAPared = false;
+            frenteABasura = false;
         }
     }
 
     // Ejemplo de métodos públicos que podrán usar otros componentes (scripts):
     public bool FrenteAPared(){
-        return frenteAPared; 
+        return frenteAPared;
     }
 
-    public bool FrenteAObjeto()
+    public bool FrenteABasura()
     {
-        return frenteAObjeto;
+        return frenteABasura;
     }
 }

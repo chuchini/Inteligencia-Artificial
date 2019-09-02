@@ -50,6 +50,26 @@ public class Sensores : MonoBehaviour
         }
     }
 
+    void OnTriggerEnter(Collider other){
+        if(other.gameObject.CompareTag("Basura")){
+            tocandoBasura = true;
+            basura = other.gameObject;
+        }
+    }
+
+    void OnTriggerStay(Collider other){
+        if(other.gameObject.CompareTag("Basura")){
+            tocandoBasura = true;
+            basura = other.gameObject;
+        }
+    }
+
+    void OnTriggerExit(Collider other){
+        if(other.gameObject.CompareTag("Basura")){
+            tocandoBasura = false;
+        }
+    }
+
     // ========================================
     // Los siguientes métodos definidos son públicos, la intención
     // es que serán usados por otro componente (Controlador)
@@ -66,22 +86,38 @@ public class Sensores : MonoBehaviour
         return rayo.FrenteAPared();
     }
 
-    public bool CercaDeObjeto()
-    {
-        return radar.CercaDeObjeto();
+    public bool TocandoBasura(){
+        return tocandoBasura;
     }
 
-    public bool FrenteAObjeto()
+    public bool CercaDeBasura(){
+        return radar.CercaDeBasura();
+    }
+
+    public bool FrenteABasura()
     {
-        return rayo.FrenteAObjeto();
+        return rayo.FrenteABasura();
     }
 
     public float Bateria(){
         return bateria.NivelDeBateria();
     }
 
+    // Algunos otros métodos auxiliares que pueden ser de apoyo
+
+    public GameObject GetBasura(){
+        return basura;
+    }
+
     public Vector3 Ubicacion(){
         return transform.position;
     }
-    
+
+    public void SetTocandoBasura(bool value){
+        tocandoBasura = value;
+    }
+
+    public void SetCercaDeBasura(bool value){
+        radar.setCercaDeBasura(value);
+    }
 }
