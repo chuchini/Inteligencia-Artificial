@@ -45,14 +45,6 @@ public class ComportamientoAutomatico : MonoBehaviour
 		percepcionActual = PercibirMundo();
 		estadoActual = TablaDeTransicion(estadoActual, percepcionActual);
 		AplicarEstado(estadoActual);
-
-		if(!sensor.FrenteAPared())
-			Debug.Log("No Frente a Pared!");
-		if(sensor.CercaDePared())
-			Debug.Log("Cerca de una pared!");
-		if(sensor.FrenteAPared())
-			Debug.Log("Frente a pared!");
-		
 	}
 
 	Estado TablaDeTransicion(Estado estado, Percepcion percepcion)
@@ -62,6 +54,9 @@ public class ComportamientoAutomatico : MonoBehaviour
 			case Estado.Avanzar:
 				switch (percepcion)
 				{
+					case Percepcion.NoCercaDePared:
+						estado = Estado.Avanzar;
+						break;
 					case Percepcion.NoCercaDeObjeto:
 						estado = Estado.Avanzar;
 						break;
@@ -72,7 +67,7 @@ public class ComportamientoAutomatico : MonoBehaviour
 						estado = Estado.Detenerse;
 						break;
 					case Percepcion.NoFrenteAObjeto:
-						estado = Estado.Girar;
+						estado = Estado.Avanzar;
 						break;
 				}
 				break;
@@ -80,14 +75,17 @@ public class ComportamientoAutomatico : MonoBehaviour
 			case Estado.Detenerse:
 				switch (percepcion)
 				{
+					case Percepcion.NoCercaDePared:
+						estado = Estado.Avanzar;
+						break;
 					case Percepcion.NoCercaDeObjeto:
 						estado = Estado.Avanzar;
 						break;
-					case Percepcion.CercaDeObjeto:
-						estado = Estado.Girar;
-						break;
 					case Percepcion.FrenteAObjeto:
 						estado = Estado.Detenerse;
+						break;
+					case Percepcion.CercaDeObjeto:
+						estado = Estado.Girar;
 						break;
 					case Percepcion.NoFrenteAObjeto:
 						estado = Estado.Girar;
@@ -98,6 +96,9 @@ public class ComportamientoAutomatico : MonoBehaviour
 			case Estado.Girar:
 				switch (percepcion)
 				{
+					case Percepcion.NoCercaDePared:
+						estado = Estado.Avanzar;
+						break;
 					case Percepcion.NoCercaDeObjeto:
 						estado = Estado.Avanzar;
 						break;
@@ -112,8 +113,6 @@ public class ComportamientoAutomatico : MonoBehaviour
 						break;
 				}
 				break;
-
-				return estado;
 		}
 
 		return estado;
@@ -146,19 +145,38 @@ public class ComportamientoAutomatico : MonoBehaviour
 	
 	Percepcion PercibirMundo() 
 	{ 
-		Percepcion percepcionActual = Percepcion.NoCercaDePared;
-		if (sensor.CercaDePared())
-			percepcionActual = Percepcion.CercaDePared;
-		//else if (!sensor.CercaDePared())
-		//	percepcionActual = Percepcion.NoCercaDePared;
-		//else if (sensor.CercaDeObjeto())
-		//	percepcionActual = Percepcion.CercaDeObjeto;
-		else if (!sensor.CercaDeObjeto())
+		Percepcion percepcionActual = Percepcion.NoFrenteAObjeto;
+		//if (sensor.CercaDePared())
+		//	percepcionActual = Percepcion.CercaDePared;
+		if (!sensor.CercaDePared())
+		{
+			percepcionActual = Percepcion.NoCercaDePared;
+			Debug.Log("No Cerca de Pared!");
+		}
+
+		if (sensor.CercaDeObjeto())
+		{
+			percepcionActual = Percepcion.CercaDeObjeto;
+			Debug.Log("Cerca de Objeto");
+		}
+
+		if (!sensor.CercaDeObjeto())
+		{
 			percepcionActual = Percepcion.NoCercaDeObjeto;
-		else if (sensor.FrenteAObjeto())
+			Debug.Log("No Cerca de Objeto");
+		}
+
+		if (sensor.FrenteAObjeto())
+		{
 			percepcionActual = Percepcion.FrenteAObjeto;
-		else
+			Debug.Log("Frente a Objeto");
+		}
+
+		if (!sensor.FrenteAObjeto())
+		{
 			percepcionActual = Percepcion.NoFrenteAObjeto;
+			Debug.Log("No Fremte a Objeto");
+		}
 
 		return percepcionActual;
 	}

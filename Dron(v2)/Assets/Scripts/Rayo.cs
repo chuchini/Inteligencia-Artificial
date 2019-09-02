@@ -10,9 +10,12 @@ public class Rayo : MonoBehaviour
     public float longitudDeRayo;
     private bool frenteAPared;
     private bool frenteAObjeto;
+    
 
     void Update(){
         // Se muestra el rayo únicamente en la pantalla de diseño (Scene)
+        //var line = transform.position + (transform.forward * longitudDeRayo);
+        //var rotatedLine = Quaternion.AngleAxis(45, transform.up) * line;
         Debug.DrawLine(transform.position, transform.position + (transform.forward * longitudDeRayo), Color.blue);
     }
 
@@ -22,13 +25,12 @@ public class Rayo : MonoBehaviour
         RaycastHit raycastHit;
         if (Physics.Raycast(transform.position, transform.forward, out raycastHit, longitudDeRayo))
         {
-            if (raycastHit.collider.gameObject.CompareTag("Pared"))
-                frenteAPared = true;
-            else if (raycastHit.collider.gameObject.CompareTag("Objeto"))
+            if (raycastHit.collider.gameObject.CompareTag("Objeto"))
+            {
                 frenteAObjeto = true;
+            }
             else
             {
-                frenteAPared = false;
                 frenteAObjeto = false;
             }
         }
