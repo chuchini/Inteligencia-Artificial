@@ -52,6 +52,8 @@ public class ComportamientoAutomatico : MonoBehaviour
 			Debug.Log("Cerca de una pared!");
 		if(sensor.FrenteAPared())
 			Debug.Log("Frente a pared!");
+		if(sensor.CercaDeObjeto())
+			Debug.Log(("Cerca de objeto"));
 		
 	}
 
@@ -112,8 +114,6 @@ public class ComportamientoAutomatico : MonoBehaviour
 						break;
 				}
 				break;
-
-				return estado;
 		}
 
 		return estado;
@@ -146,18 +146,18 @@ public class ComportamientoAutomatico : MonoBehaviour
 	
 	Percepcion PercibirMundo() 
 	{ 
-		Percepcion percepcionActual = Percepcion.NoCercaDePared;
-		if (sensor.CercaDePared())
-			percepcionActual = Percepcion.CercaDePared;
+		Percepcion percepcionActual = Percepcion.NoCercaDeObjeto;
+		//if (sensor.CercaDePared())
+		//	percepcionActual = Percepcion.CercaDePared;
 		//else if (!sensor.CercaDePared())
 		//	percepcionActual = Percepcion.NoCercaDePared;
-		//else if (sensor.CercaDeObjeto())
-		//	percepcionActual = Percepcion.CercaDeObjeto;
+		if (sensor.CercaDeObjeto())
+			percepcionActual = Percepcion.CercaDeObjeto;
 		else if (!sensor.CercaDeObjeto())
 			percepcionActual = Percepcion.NoCercaDeObjeto;
 		else if (sensor.FrenteAObjeto())
 			percepcionActual = Percepcion.FrenteAObjeto;
-		else
+		else //if(!sensor.FrenteAObjeto())
 			percepcionActual = Percepcion.NoFrenteAObjeto;
 
 		return percepcionActual;

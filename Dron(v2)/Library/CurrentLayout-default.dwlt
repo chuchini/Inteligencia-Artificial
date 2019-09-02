@@ -100,7 +100,7 @@ MonoBehaviour:
   m_MinSize: {x: 234, y: 616}
   m_MaxSize: {x: 10004, y: 18066}
   vertical: 1
-  controlID: 122
+  controlID: 75
 --- !u!114 &5
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -172,7 +172,7 @@ MonoBehaviour:
   m_MinSize: {x: 713, y: 616}
   m_MaxSize: {x: 18008, y: 18066}
   vertical: 0
-  controlID: 98
+  controlID: 172
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -218,7 +218,7 @@ MonoBehaviour:
   m_MinSize: {x: 202, y: 444}
   m_MaxSize: {x: 4002, y: 8044}
   vertical: 1
-  controlID: 99
+  controlID: 54
 --- !u!114 &10
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -378,9 +378,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 58300000
-      m_LastClickedID: 12376
-      m_ExpandedIDs: 6cfbffffc02f00004030000058300000
+      m_SelectedIDs: 7e360000
+      m_LastClickedID: 13950
+      m_ExpandedIDs: 46faffffe2350000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -479,20 +479,20 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets
+    - Assets/Scripts
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets
+  - Assets/Scripts
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\Users\chuch\Documents\GitHub\Inteligencia-Artificial\Dron(v2)
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: a22c0000
-    m_LastClickedID: 11426
-    m_ExpandedIDs: 00000000a22c000000ca9a3b
+    m_SelectedIDs: 14330000
+    m_LastClickedID: 13076
+    m_ExpandedIDs: 000000000e33000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -520,7 +520,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000a22c0000
+    m_ExpandedIDs: 000000000e330000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -693,9 +693,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 15.706718, y: -26.71941, z: 7.6813774}
+    m_Target: {x: 26.290405, y: -13.426453, z: 2.5441484}
     speed: 2
-    m_Value: {x: 15.706718, y: -26.71941, z: 7.6813774}
+    m_Value: {x: 26.290405, y: -13.426453, z: 2.5441484}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -724,13 +724,13 @@ MonoBehaviour:
       speed: 2
       m_Value: 0
   m_Rotation:
-    m_Target: {x: 0.2679532, y: 0.6075616, z: -0.22868785, w: 0.7118795}
+    m_Target: {x: 0.20270279, y: 0.6430635, z: -0.18213382, w: 0.7156874}
     speed: 2
-    m_Value: {x: 0.26795313, y: 0.60756147, z: -0.2286878, w: 0.7118793}
+    m_Value: {x: 0.20270276, y: 0.6430634, z: -0.18213381, w: 0.71568733}
   m_Size:
-    m_Target: 88.52989
+    m_Target: 90.51406
     speed: 2
-    m_Value: 92.701454
+    m_Value: 90.51406
   m_Ortho:
     m_Target: 0
     speed: 2
