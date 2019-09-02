@@ -2,13 +2,30 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e7c02140-dcbc-498e-a65a-8639d4692ca0" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Dron(v2)/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Dron(v2)/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Dron(v2)/.idea/indexLayout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Dron(v2)/.idea/indexLayout.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Dron(v2)/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Dron(v2)/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assembly-CSharp.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Assembly-CSharp.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Simulacion.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Simulacion.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Actuadores.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Actuadores.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/ComportamientoAutomatico.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ComportamientoAutomatico.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/ScriptAssemblies/BuiltinAssemblies.stamp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/StateCache/Hierarchy/552803-mainStage.json" beforeDir="false" afterPath="$PROJECT_DIR$/Library/StateCache/Hierarchy/552803-mainStage.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Controlador.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Controlador.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Radar.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Radar.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Rayo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Rayo.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Sensores.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Sensores.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/CurrentLayout-default.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/Library/CurrentLayout-default.dwlt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/InspectorExpandedItems.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Library/InspectorExpandedItems.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/LastSceneManagerSetup.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Library/LastSceneManagerSetup.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/ProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Library/ProjectSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/StateCache/SceneView/0ea052-mainStage.json" beforeDir="false" afterPath="$PROJECT_DIR$/Library/StateCache/SceneView/0ea052-mainStage.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Library/assetDatabase3" beforeDir="false" afterPath="$PROJECT_DIR$/Library/assetDatabase3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/metadata/0b/0b0b22a61736ae3dea1d5ec334b22d4b" beforeDir="false" afterPath="$PROJECT_DIR$/Library/metadata/0b/0b0b22a61736ae3dea1d5ec334b22d4b" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/metadata/17/174e3461b61688eff820005a083febdd" beforeDir="false" afterPath="$PROJECT_DIR$/Library/metadata/17/174e3461b61688eff820005a083febdd" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Library/metadata/7f/7fa4cfdf36c9d98cbbcba883009c6196" beforeDir="false" afterPath="$PROJECT_DIR$/Library/metadata/7f/7fa4cfdf36c9d98cbbcba883009c6196" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/metadata/ab/aba189072d89867ff8e1aa317f683460" beforeDir="false" afterPath="$PROJECT_DIR$/Library/metadata/ab/aba189072d89867ff8e1aa317f683460" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/metadata/af/affd3433e96b381b19936d68d49dcaa3" beforeDir="false" afterPath="$PROJECT_DIR$/Library/metadata/af/affd3433e96b381b19936d68d49dcaa3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/metadata/bd/bd889c01fe008908dbd31a1ec2ccec28" beforeDir="false" afterPath="$PROJECT_DIR$/Library/metadata/bd/bd889c01fe008908dbd31a1ec2ccec28" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -20,32 +37,37 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Bateria.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Sensores.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Rayo.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/ComportamientoEstados.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/ComportamientoAutomatico.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Controlador.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Actuadores.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Bateria.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/ComportamientoEstados.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/ControladorObjeto.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Radar.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$USER_HOME$/Downloads/Proyecto1/inteligencia/Aspiradora 2018-1/Assets/Scripts/ComportamientoAutomatico.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Actuadores.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$USER_HOME$/Downloads/Proyecto1/inteligencia/Aspiradora 2018-1/Assets/Scripts/Sensores.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Assets/Scripts/Radar.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Rayo.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/ComportamientoEstados.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Sensores.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Controlador.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Actuadores.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Rayo.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Sensores.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/ControladorDron.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Rotacion.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Radar.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/ComportamientoAutomatico.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/ControladorObjeto.cs" />
       </list>
     </option>
   </component>
   <component name="ProjectId" id="1Q1NFCUPq8vql8X2D3geEvgnGMu" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="Discover.Launch.Via.Unity" value="true" />
     <property name="Rider.DefaultBreakpoints.AreToggled" value="true" />
@@ -110,6 +132,16 @@
   </component>
   <component name="UnityProjectConfiguration" hasMinimizedUI="true" />
   <component name="UnityUnitTestConfiguration" currentTestLauncher="EditMode" />
+  <component name="Vcs.Log.History.Properties">
+    <option name="COLUMN_ORDER">
+      <list>
+        <option value="0" />
+        <option value="2" />
+        <option value="3" />
+        <option value="1" />
+      </list>
+    </option>
+  </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
       <map>
@@ -125,6 +157,12 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="LOCAL_CHANGES_DETAILS_PREVIEW_SHOWN" value="true" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="72" y="255" key="Rider.ProjectTemplateDialog.Size" />
+    <state x="72" y="255" key="Rider.ProjectTemplateDialog.Size/1920.1080" />
+    <state x="616" y="240" key="run.anything.popup" />
+    <state x="616" y="240" key="run.anything.popup/1920.1080" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

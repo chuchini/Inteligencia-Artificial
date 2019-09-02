@@ -47,26 +47,16 @@ public class Controlador : MonoBehaviour
         if(Input.GetAxis("Horizontal") < 0)
             actuador.Izquierda();
 
-
-        if(sensor.TocandoBasura()){
-            Debug.Log("Tocando basura!");
-            actuador.Limpiar(sensor.GetBasura());
-        }
+        
         if(sensor.TocandoPared())
             Debug.Log("Tocando pared!");
-
-        if(sensor.CercaDeBasura())
-            Debug.Log("Cerca de una basura!");
         if(sensor.CercaDePared())
             Debug.Log("Cerca de una pared!");
-
         if(sensor.FrenteAPared())
             Debug.Log("Frente a pared!");
-
-
         if(Input.GetKey(KeyCode.F))
             actuador.Detener();
-        if(Input.GetKey(KeyCode.G))
-            Debug.Log(sensor.Ubicacion());
+        //if(Input.GetKey(KeyCode.G))
+          //  Debug.Log(sensor.Ubicacion());
     }
 }

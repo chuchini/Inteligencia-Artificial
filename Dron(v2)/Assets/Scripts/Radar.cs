@@ -7,15 +7,15 @@ using UnityEngine;
 // Las comprobaciones y métodos son análogos al componente (script) de Sensores.
 public class Radar : MonoBehaviour
 {
-    private bool cercaDeBasura;
+    private bool cercaDeObjeto;
     private bool cercaDePared;
     private bool cercaDeBaseDeCarga;
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Basura"))
+        if (other.gameObject.CompareTag("Objeto"))
         {
-            cercaDeBasura = true;
+            cercaDeObjeto = true;
         }
 
         if (other.gameObject.CompareTag("Pared"))
@@ -30,9 +30,9 @@ public class Radar : MonoBehaviour
 }
 
     void OnTriggerStay(Collider other){
-        if(other.gameObject.CompareTag("Basura"))
+        if(other.gameObject.CompareTag("Objeto"))
         {
-            cercaDeBasura = true;
+            cercaDeObjeto = true;
         }
         
         if(other.gameObject.CompareTag("Pared"))
@@ -47,8 +47,8 @@ public class Radar : MonoBehaviour
     }
 
     void OnTriggerExit(Collider other){
-        if(other.gameObject.CompareTag("Basura")){
-            cercaDeBasura = false;
+        if(other.gameObject.CompareTag("Objeto")){
+            cercaDeObjeto = false;
         }
         if(other.gameObject.CompareTag("Pared")){
             cercaDePared = false;
@@ -60,20 +60,17 @@ public class Radar : MonoBehaviour
         }
     }
 
-    public bool CercaDeBasura(){
-        return cercaDeBasura;
-    }
-
     public bool CercaDePared(){
         return cercaDePared;
+    }
+
+    public bool CercaDeObjeto()
+    {
+        return cercaDeObjeto;
     }
 
     public bool CercaDeBaseDeCarga()
     {
         return cercaDeBaseDeCarga;
-    }
-
-    public void setCercaDeBasura(bool value){
-        cercaDeBasura = value;
     }
 }
