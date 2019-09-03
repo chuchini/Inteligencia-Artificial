@@ -20,7 +20,8 @@ public class Rayo : MonoBehaviour
     }
 
     void FixedUpdate()
-    {
+    {	
+	frenteAObjeto=false;
         // Similar a los métodos OnTrigger y OnCollision, se detectan colisiones con el rayo:
         RaycastHit raycastHit;
         if (Physics.Raycast(transform.position, transform.forward, out raycastHit, longitudDeRayo))

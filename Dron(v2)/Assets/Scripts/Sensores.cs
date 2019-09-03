@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Sensores : MonoBehaviour
 {
-    private GameObject basura; // Auxiliar para guardar referencia al objeto
+    private GameObject objeto; // Auxiliar para guardar referencia al objeto
     private Radar radar; // Componente auxiliar (script) para utilizar radar esférico
     private Rayo rayo; // Componente auxiliar (script) para utilizar rayo lineal
     private Bateria bateria; // Componente adicional (script) que representa la batería
@@ -12,8 +12,8 @@ public class Sensores : MonoBehaviour
 
     private bool tocandoPared; // Bandera auxiliar para mantener el estado en caso de tocar pared
     private bool cercaPared; // Bandera auxiliar para mantener el estado en caso de estar cerca de una pared
-    private bool tocandoBasura; // Bandera auxiliar para mantener el estado en caso de tocar basura
-    private bool cercaBasura; // Bandera auxiliar para mantener el estado en caso de estar cerca de una basura
+    private bool tocandoObjeto; // Bandera auxiliar para mantener el estado en caso de tocar basura
+    private bool cercaObjeto; // Bandera auxiliar para mantener el estado en caso de estar cerca de una basura
     public GameObject baseDeCarga;
 
     // Asignaciones de componentes
