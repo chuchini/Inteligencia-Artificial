@@ -14,6 +14,8 @@ public class Sensores : MonoBehaviour
     private bool cercaPared; // Bandera auxiliar para mantener el estado en caso de estar cerca de una pared
     private bool tocandoObjeto; // Bandera auxiliar para mantener el estado en caso de tocar basura
     private bool cercaObjeto; // Bandera auxiliar para mantener el estado en caso de estar cerca de una basura
+    private bool tocandoBase;
+    private Vector3 posicionBase;
     public GameObject baseDeCarga;
 
     // Asignaciones de componentes
@@ -22,6 +24,7 @@ public class Sensores : MonoBehaviour
         rayo = GameObject.Find("Rayo").gameObject.GetComponent<Rayo>();
         bateria = GameObject.Find("Bateria").gameObject.GetComponent<Bateria>();
         actuador = GetComponent<Actuadores>();
+        posicionBase = baseDeCarga.transform.position;
     }
 
     // ========================================
@@ -33,20 +36,32 @@ public class Sensores : MonoBehaviour
         if(other.gameObject.CompareTag("Pared")){
             tocandoPared = true;
         }
+
+        if (other.gameObject.CompareTag("BaseDeCarga"))
+        {
+            tocandoBase = true;
+        }
     }
 
     void OnCollisionStay(Collision other){
         if(other.gameObject.CompareTag("Pared")){
             tocandoPared = true;
         }
-        if(other.gameObject.CompareTag("BaseDeCarga")){
-            actuador.CargarBateria();
+        
+        if (other.gameObject.CompareTag("BaseDeCarga"))
+        {
+            tocandoBase = true;
         }
     }
 
     void OnCollisionExit(Collision other){
         if(other.gameObject.CompareTag("Pared")){
             tocandoPared = false;
+        }
+        
+        if (other.gameObject.CompareTag("BaseDeCarga"))
+        {
+            tocandoBase = false;
         }
     }
 
@@ -56,6 +71,11 @@ public class Sensores : MonoBehaviour
 
     public bool TocandoPared(){
         return tocandoPared;
+    }
+
+    public bool TocandoBase()
+    {
+        return tocandoBase;
     }
 
     public bool CercaDePared(){
@@ -80,6 +100,16 @@ public class Sensores : MonoBehaviour
         return bateria.NivelDeBateria();
     }
 
+    public float BateriaMaxima()
+    {
+        return bateria.capacidadMaximaBateria;
+    }
+
+    public Vector3 UbicacionBase()
+    {
+        return posicionBase;
+    }
+    
     public Vector3 Ubicacion(){
         return transform.position;
     }

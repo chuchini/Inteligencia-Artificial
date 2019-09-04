@@ -20,8 +20,9 @@ public class Rayo : MonoBehaviour
     }
 
     void FixedUpdate()
-    {	
-	frenteAObjeto=false;
+    {
+        frenteAPared = false;
+	    frenteAObjeto = false;
         // Similar a los métodos OnTrigger y OnCollision, se detectan colisiones con el rayo:
         RaycastHit raycastHit;
         if (Physics.Raycast(transform.position, transform.forward, out raycastHit, longitudDeRayo))
@@ -33,6 +34,15 @@ public class Rayo : MonoBehaviour
             else
             {
                 frenteAObjeto = false;
+            }
+
+            if (raycastHit.collider.gameObject.CompareTag("Pared"))
+            {
+                frenteAPared = true;
+            }
+            else
+            {
+                frenteAPared = false;
             }
         }
     }

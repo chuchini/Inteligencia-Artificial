@@ -69,14 +69,8 @@ public class Radar : MonoBehaviour
     {
         return cercaDeObjeto;
     }
-
-    public bool CercaDeBaseDeCarga()
-    {
-        return cercaDeBaseDeCarga;
+    
+    void Update(){
+        cercaDeObjeto=false; 
     }
-
- void Update(){
-	cercaDeObjeto=false;
-}
-
 }
