@@ -3,15 +3,15 @@
   <component name="ChangeListManager">
     <list default="true" id="e7c02140-dcbc-498e-a65a-8639d4692ca0" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Dron(v2)/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Dron(v2)/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Actuadores.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Actuadores.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/ComportamientoAutomatico.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ComportamientoAutomatico.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ControladorObjeto.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ControladorObjeto.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Library/ScriptAssemblies/Assembly-CSharp.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Library/ScriptAssemblies/Assembly-CSharp.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Library/ScriptAssemblies/Assembly-CSharp.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Library/ScriptAssemblies/Assembly-CSharp.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Library/StateCache/Hierarchy/552803-mainStage.json" beforeDir="false" afterPath="$PROJECT_DIR$/Library/StateCache/Hierarchy/552803-mainStage.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Library/StateCache/SceneView/0ea052-mainStage.json" beforeDir="false" afterPath="$PROJECT_DIR$/Library/StateCache/SceneView/0ea052-mainStage.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Library/assetDatabase3" beforeDir="false" afterPath="$PROJECT_DIR$/Library/assetDatabase3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/metadata/2e/2e3994657c286e941b3760a74fab1557" beforeDir="false" afterPath="$PROJECT_DIR$/Library/metadata/2e/2e3994657c286e941b3760a74fab1557" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Library/metadata/7f/7fa4cfdf36c9d98cbbcba883009c6196" beforeDir="false" afterPath="$PROJECT_DIR$/Library/metadata/7f/7fa4cfdf36c9d98cbbcba883009c6196" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/metadata/ab/aba189072d89867ff8e1aa317f683460" beforeDir="false" afterPath="$PROJECT_DIR$/Library/metadata/ab/aba189072d89867ff8e1aa317f683460" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -46,10 +46,10 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/Lerp.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/AuxiliarLerp.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Sensores.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Actuadores.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Radar.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/ControladorObjeto.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/ComportamientoAutomatico.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Actuadores.cs" />
       </list>
     </option>
   </component>
@@ -115,7 +115,7 @@
       <workItem from="1567197032421" duration="1832000" />
       <workItem from="1567358488575" duration="205000" />
       <workItem from="1567448005090" duration="1546000" />
-      <workItem from="1567543896697" duration="29303000" />
+      <workItem from="1567543896697" duration="31079000" />
     </task>
     <servers />
   </component>
