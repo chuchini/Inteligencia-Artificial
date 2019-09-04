@@ -84,7 +84,7 @@ public class ComportamientoAutomatico : MonoBehaviour
 				switch (percepcion)
 				{
 					// COMPORTAMIENTO CON BASE A LAS PERCEPCIONES DE LA PARED
-					/*case Percepcion.CercaDePared:
+					case Percepcion.CercaDePared:
 						estado = Estado.Detenerse;
 						break;
 					case Percepcion.NoCercaDePared:
@@ -92,38 +92,28 @@ public class ComportamientoAutomatico : MonoBehaviour
 						break;
 					case Percepcion.FrenteAPared:
 						estado = Estado.Detenerse;
+						
 						break;
-					case Percepcion.NoFrenteAPared:
-						estado = Estado.Avanzar;
-						break;
-					*/
+					//case Percepcion.NoFrenteAPared:
+					//	estado = sensor.CercaDePared() == false ? Estado.Avanzar : Estado.Detenerse;
+					//	Debug.Log("Estoy aqui 6");
+					//	break;
+						
 					// COMPORTAMIENTO CON BASE A LAS PERCEPCIONES DEL OBJETO
 					case Percepcion.CercaDeObjeto:
 						estado = Estado.Detenerse;
 						break;
-					case Percepcion.NoCercaDeObjeto:
-					//	if (sensor.CercaDePared() == false)
-					//	{
-							estado = Estado.Avanzar;
-					//	}
-					//	else
-					//	{
-					//		estado = Estado.Detenerse;
-					//	}
-						break;
+					//case Percepcion.NoCercaDeObjeto:
+					//	estado = sensor.CercaDePared() == false ? Estado.Avanzar : Estado.Detenerse;
+					//	Debug.Log("Estoy aqui");
+					//	break;
 					case Percepcion.FrenteAObjeto:
 						estado = Estado.Detenerse;
 						break;
-					case Percepcion.NoFrenteAObjeto:
-						if (sensor.CercaDeObjeto() == false)
-						{
-							estado = Estado.Avanzar;
-						}
-						else
-						{
-							estado = Estado.Detenerse;
-						}
-						break;
+					//case Percepcion.NoFrenteAObjeto:
+					//	estado = sensor.CercaDeObjeto() == false ? Estado.Avanzar : Estado.Detenerse;
+					//	Debug.Log("Estoy aqui");
+					//	break;
 					
 					case Percepcion.BateriaBaja:
 						estado = Estado.Retornar;
@@ -131,35 +121,6 @@ public class ComportamientoAutomatico : MonoBehaviour
 					case Percepcion.TocandoBase:
 						estado = Estado.Cargarse;
 						break;
-					//case Percepcion.NoTocandoBase:
-					//	if (sensor.Bateria() > 50)
-					//	{
-					//	estado = Estado.Avanzar;
-					//	Debug.Log("Me meti aqui");
-							
-					//	}
-					//	else
-					//	{
-					//		estado = Estado.Retornar;
-					//	}
-					//	break;
-					//case Percepcion.NoBateriaBaja:
-						//if (sensor.Bateria() < sensor.BateriaMaxima())
-						//{
-						//	estado = Estado.Cargarse;
-						//}
-						//else
-						//{
-					//	if (sensor.CercaDeObjeto() == false)
-					//	{
-					//		estado = Estado.Avanzar;
-					//	}
-					//	else //if (sensor.CercaDeObjeto() == true)
-					//	{
-					//		estado = Estado.Detenerse;
-					//	}
-						//}
-					//	break;
 				}
 				break;
 			
@@ -167,7 +128,7 @@ public class ComportamientoAutomatico : MonoBehaviour
 				switch (percepcion)
 				{
 					// COMPORTAMIENTO CON BASE A LAS PERCEPCIONES DE LA PARED
-					/*case Percepcion.CercaDePared:
+					case Percepcion.CercaDePared:
 						estado = Estado.Retroceder;
 						break;
 					case Percepcion.NoCercaDePared:
@@ -176,28 +137,20 @@ public class ComportamientoAutomatico : MonoBehaviour
 					case Percepcion.FrenteAPared:
 						estado = Estado.Girar;
 						break;
-					case Percepcion.NoFrenteAPared:
-						estado = Estado.Avanzar;
-						break;
-					*/
+					//case Percepcion.NoFrenteAPared:
+					//	estado = sensor.CercaDePared() == false ? Estado.Avanzar : Estado.Retroceder;
+					//	break;
+					
 					// COMPORTAMIENTO CON BASE A LAS PERCEPCIONES DEL OBJETO
 					case Percepcion.CercaDeObjeto:
 						estado = Estado.Girar;
 						break;
-					case Percepcion.NoCercaDeObjeto:
-					//	if (sensor.CercaDePared() == false)
-					//	{
-							estado = Estado.Avanzar;
-					
-					//	}
-					//	else
-					//	{
-					//		estado = Estado.Retroceder;
-					//	}
-						break;
+					//case Percepcion.NoCercaDeObjeto:
+					//	estado = sensor.CercaDePared() == false ? Estado.Avanzar : Estado.Retroceder;
+					//	Debug.Log("Estoy aqui 2");
+					//	break;
 					case Percepcion.FrenteAObjeto:
 						estado = Estado.Detenerse;
-						Debug.Log("Me meti aqui");
 						break;
 					case Percepcion.NoFrenteAObjeto:
 						estado = sensor.CercaDeObjeto() == false ? Estado.Avanzar : Estado.Girar;
@@ -215,28 +168,6 @@ public class ComportamientoAutomatico : MonoBehaviour
 							estado = Estado.Cargarse;
 						}
 						break;
-					//case Percepcion.NoTocandoBase:
-					//	if (sensor.Bateria() > 50)
-					//	{
-					//		estado = Estado.Avanzar;
-					//	}
-					//	else
-					//	{
-					//		estado = Estado.Retornar;
-					//	}
-					//	break;
-					//case Percepcion.NoBateriaBaja:
-						//if (sensor.Bateria() < sensor.BateriaMaxima())
-						//{
-						//	estado = Estado.Cargarse;
-						//}
-						//else
-						//{
-					//	estado = Estado.Avanzar;
-					//	Debug.Log("Me meti aqui");
-					//}
-					//break;
-					
 				}
 				break;
 			
@@ -244,7 +175,7 @@ public class ComportamientoAutomatico : MonoBehaviour
 				switch (percepcion)
 				{
 					// COMPORTAMIENTO CON BASE A LAS PERCEPCIONES DE LA PARED
-					/*case Percepcion.CercaDePared:
+					case Percepcion.CercaDePared:
 						estado = Estado.Retroceder; //Antes avanzaba
 						break;
 					case Percepcion.NoCercaDePared:
@@ -253,36 +184,23 @@ public class ComportamientoAutomatico : MonoBehaviour
 					case Percepcion.FrenteAPared:
 						estado = Estado.Girar;
 						break;
-					case Percepcion.NoFrenteAPared:
-						estado = Estado.Avanzar;
-						break;
-					*/
+					//case Percepcion.NoFrenteAPared:
+					//	estado = sensor.CercaDePared() == false ? Estado.Avanzar : Estado.Retroceder;
+					//	Debug.Log("Estoy aqui 4");
+					//	break;
+					
 					// COMPORTAMIENTO CON BASE A LAS PERCEPCIONES DEL OBJETO
 					case Percepcion.CercaDeObjeto:
 						estado = Estado.Detenerse;
 						break;
-					case Percepcion.NoCercaDeObjeto:
-					//	if (sensor.CercaDePared() == false)
-					//	{
-							estado = Estado.Avanzar;
-					//	}
-					//	else
-					//	{
-					//		estado = Estado.Retroceder;
-					//	}
-						break;
+					//case Percepcion.NoCercaDeObjeto:
+					//	estado = Estado.Avanzar;
+					//	break;
 					case Percepcion.FrenteAObjeto:
 						estado = Estado.Detenerse;
 						break;
 					case Percepcion.NoFrenteAObjeto:
-						if (sensor.CercaDeObjeto() == false)
-						{
-							estado = Estado.Avanzar;
-						}
-						else
-						{
-							estado = Estado.Girar;
-						}
+						estado = sensor.CercaDeObjeto() == false ? Estado.Avanzar : Estado.Girar;
 						break;
 					case Percepcion.BateriaBaja:
 						estado = Estado.Retornar;
@@ -290,19 +208,6 @@ public class ComportamientoAutomatico : MonoBehaviour
 					case Percepcion.TocandoBase:
 						estado = sensor.Bateria() > 50 ? Estado.Avanzar : Estado.Cargarse;
 						break;
-					//case Percepcion.NoTocandoBase:
-					//	estado = sensor.Bateria() > 50 ? Estado.Avanzar : Estado.Retornar;
-					//	break;
-					//case Percepcion.NoBateriaBaja:
-						//if (sensor.Bateria() < sensor.BateriaMaxima())
-						//{
-						//	estado = Estado.Cargarse;
-						//}
-						//else
-						//{
-					//	estado = Estado.Avanzar;
-					//}
-					//break;
 				}
 				break;
 			
@@ -310,39 +215,37 @@ public class ComportamientoAutomatico : MonoBehaviour
 				switch (percepcion)
 				{
 					// COMPORTAMIENTO CON BASE A LAS PERCEPCIONES DE LA PARED
-					/*case Percepcion.CercaDePared:
+					case Percepcion.CercaDePared:
 						estado = Estado.Retroceder;
+						Debug.Log("Estoy aqui 4");
 						break;
 					case Percepcion.NoCercaDePared:
-						estado = Estado.Avanzar;
+						estado = Estado.Girar;
+						Debug.Log("Estoy aqui 5");
 						break;
 					case Percepcion.FrenteAPared:
 						estado = Estado.Detenerse;
 						break;
-					case Percepcion.NoFrenteAPared:
-						estado = Estado.Avanzar;
-						break;
-					*/
+					//case Percepcion.NoFrenteAPared:
+					//	estado = Estado.Avanzar;
+					//	//estado = sensor.CercaDePared() == false ? Estado.Avanzar : Estado.Retroceder;
+					//	Debug.Log("Estoy aqui 5");
+					//	break;
+			
 					// COMPORTAMIENTO CON BASE A LAS PERCEPCIONES DEL OBJETO
 					case Percepcion.CercaDeObjeto:
 						estado = Estado.Detenerse;
 						break;
-					case Percepcion.NoCercaDeObjeto:
-					//	if (sensor.CercaDePared() == false)
-					//	{
-							estado = Estado.Avanzar;
-					//	}
-					//	else
-					//	{
-					//		estado = Estado.Retroceder;
-					//	}
-						
-						break;
+					//case Percepcion.NoCercaDeObjeto:
+					//	estado = sensor.CercaDePared() == false ? Estado.Avanzar : Estado.Retroceder;
+					//	Debug.Log("Estoy aqui 3");
+					//	break;
 					case Percepcion.FrenteAObjeto:
 						estado = Estado.Detenerse;
 						break;
 					case Percepcion.NoFrenteAObjeto:
 						estado = sensor.CercaDeObjeto() == false ? Estado.Retroceder : Estado.Detenerse;
+						//Debug.Log("Estoy aqui 3");
 						break;
 					case Percepcion.BateriaBaja:
 						estado = Estado.Retornar;
@@ -350,20 +253,7 @@ public class ComportamientoAutomatico : MonoBehaviour
 					case Percepcion.TocandoBase:
 						estado = sensor.Bateria() > 50 ? Estado.Avanzar : Estado.Cargarse;
 						break;
-					//case Percepcion.NoTocandoBase:
-					//	estado = sensor.Bateria() > 50 ? Estado.Avanzar : Estado.Retornar;
-					//	break;
-					//case Percepcion.NoBateriaBaja:
-						//if (sensor.Bateria() < sensor.BateriaMaxima())
-						//{
-						//	estado = Estado.Cargarse;
-						//}
-						//else
-						//{
-					//	estado = Estado.Avanzar;
-					//}
-					//break;
-					
+
 				}
 				break;
 			
@@ -371,26 +261,26 @@ public class ComportamientoAutomatico : MonoBehaviour
 				switch (percepcion)
 				{
 					// COMPORTAMIENTO CON BASE A LAS PERCEPCIONES DE LA PARED
-					/*case Percepcion.CercaDePared:
-						estado = Estado.Retroceder;
+					case Percepcion.CercaDePared:
+						estado = Estado.Retornar;
 						break;
 					case Percepcion.NoCercaDePared:
-						estado = Estado.Avanzar;
+						estado = Estado.Retornar;
 						break;
 					case Percepcion.FrenteAPared:
-						estado = Estado.Detenerse;
+						estado = Estado.Retornar;
 						break;
-					case Percepcion.NoFrenteAPared:
-						estado = Estado.Avanzar;
-						break;
-					*/
+					//case Percepcion.NoFrenteAPared:
+					//	estado = Estado.Retornar;
+					//	break;
+					
 					// COMPORTAMIENTO CON BASE A LAS PERCEPCIONES DEL OBJETO
 					case Percepcion.CercaDeObjeto:
 						estado = Estado.Retornar;
 						break;
-					case Percepcion.NoCercaDeObjeto:
-						estado = Estado.Retornar;
-						break;
+					//case Percepcion.NoCercaDeObjeto:
+					//	estado = Estado.Retornar;
+					//	break;
 					case Percepcion.FrenteAObjeto:
 						estado = Estado.Retornar;
 						break;
@@ -403,19 +293,6 @@ public class ComportamientoAutomatico : MonoBehaviour
 					case Percepcion.TocandoBase:
 						estado = sensor.Bateria() > 50 ? Estado.Avanzar : Estado.Cargarse;
 						break;
-					//case Percepcion.NoTocandoBase:
-					//	estado = sensor.Bateria() > 50 ? Estado.Avanzar : Estado.Retornar;
-					//	break;
-					//case Percepcion.NoBateriaBaja:
-						//if (sensor.Bateria() < sensor.BateriaMaxima())
-						//{
-						//	estado = Estado.Cargarse;
-						//}
-						//else
-						//{
-					//	estado = Estado.Avanzar;
-					//}
-					//break;
 				}
 				break;
 			
@@ -423,26 +300,26 @@ public class ComportamientoAutomatico : MonoBehaviour
 				switch (percepcion)
 				{
 					// COMPORTAMIENTO CON BASE A LAS PERCEPCIONES DE LA PARED
-					/*case Percepcion.CercaDePared:
-						estado = Estado.Retroceder;
+					case Percepcion.CercaDePared:
+						estado = Estado.Retornar;
 						break;
 					case Percepcion.NoCercaDePared:
-						estado = Estado.Avanzar;
+						estado = Estado.Retornar;
 						break;
 					case Percepcion.FrenteAPared:
-						estado = Estado.Detenerse;
+						estado = Estado.Retornar;
 						break;
-					case Percepcion.NoFrenteAPared:
-						estado = Estado.Avanzar;
-						break;
-					*/
+					//case Percepcion.NoFrenteAPared:
+					//	estado = Estado.Retornar;
+					//	break;
+					
 					// COMPORTAMIENTO CON BASE A LAS PERCEPCIONES DEL OBJETO
 					case Percepcion.CercaDeObjeto:
 						estado = Estado.Retornar;
 						break;
-					case Percepcion.NoCercaDeObjeto:
-						estado = Estado.Retornar;
-						break;
+					//case Percepcion.NoCercaDeObjeto:
+					//	estado = Estado.Retornar;
+					//	break;
 					case Percepcion.FrenteAObjeto:
 						estado = Estado.Retornar;
 						break;
@@ -457,29 +334,12 @@ public class ComportamientoAutomatico : MonoBehaviour
 						if (sensor.Bateria() < sensor.BateriaMaxima())
 						{
 							estado = Estado.Cargarse;
-							Debug.Log("Estoy atorado aqui 3");
 						}
 						else
 						{
-							Debug.Log("Ya no ocupo carga");
 							estado = Estado.Ascender;
 						}
 						break;
-					//case Percepcion.NoTocandoBase:
-					//	estado = Estado.Retornar;
-					//	break;
-					//case Percepcion.NoBateriaBaja:
-					//	if (sensor.Bateria() < sensor.BateriaMaxima())
-					//	{
-					//		estado = Estado.Cargarse;
-					//		Debug.Log("Estoy atorado aqui 2");
-					//	}
-					//	else
-					//	{
-					//		Debug.Log("Ya no ocupo carga");
-					//		estado = Estado.Avanzar;
-					//	}
-					//	break;
 				}
 				break;
 			
@@ -524,7 +384,7 @@ public class ComportamientoAutomatico : MonoBehaviour
 
 	void Cargarse()
 	{
-		actuador.Flotar();
+		actuador.Detener();
 		actuador.CargarBateria();
 	}
 
@@ -542,7 +402,7 @@ public class ComportamientoAutomatico : MonoBehaviour
 	Percepcion PercibirMundo() 
 	{ 
 		Percepcion percepcionActual = Percepcion.NoCercaDeObjeto;
-		/*if (sensor.CercaDePared())
+		if (sensor.CercaDePared())
 		{
 			percepcionActual = Percepcion.CercaDePared;
 			Debug.Log("Cerca de Pared");
@@ -560,11 +420,11 @@ public class ComportamientoAutomatico : MonoBehaviour
 			Debug.Log("Frente a Pared");
 		}
 
-		if (!sensor.FrenteAPared())
-		{
-			percepcionActual = Percepcion.NoFrenteAPared;
-			Debug.Log("No Frente a Pared");
-		}*/
+		//if (!sensor.FrenteAPared())
+		//{
+		//	percepcionActual = Percepcion.NoFrenteAPared;
+		//	Debug.Log("No Frente a Pared");
+		//}
 		
 		if (sensor.CercaDeObjeto())
 		{
@@ -572,11 +432,11 @@ public class ComportamientoAutomatico : MonoBehaviour
 			Debug.Log("Cerca de Objeto");
 		}
 
-		if (!sensor.CercaDeObjeto())
-		{
-			percepcionActual = Percepcion.NoCercaDeObjeto;
-			Debug.Log("No Cerca de Objeto");
-		}
+		//if (!sensor.CercaDeObjeto())
+		//{
+		//	percepcionActual = Percepcion.NoCercaDeObjeto;
+		//	Debug.Log("No Cerca de Objeto");
+		//}
 
 		if (sensor.FrenteAObjeto())
 		{
@@ -584,36 +444,24 @@ public class ComportamientoAutomatico : MonoBehaviour
 			Debug.Log("Frente a Objeto");
 		}
 
-		if (!sensor.FrenteAObjeto())
-		{
-			percepcionActual = Percepcion.NoFrenteAObjeto;
-			Debug.Log("No Fremte a Objeto");
-		}
+		//if (!sensor.FrenteAObjeto())
+		//{
+		//	percepcionActual = Percepcion.NoFrenteAObjeto;
+		//	Debug.Log("No Fremte a Objeto");
+		//}
 
 		if (sensor.Bateria() < 50)
 		{
 			percepcionActual = Percepcion.BateriaBaja;
 			Debug.Log("Bateria Baja");
 		}
-		
-		//if (sensor.Bateria() > 50)
-		//{
-		//	percepcionActual = Percepcion.NoBateriaBaja;
-		//	Debug.Log("Bateria No Baja");
-		//}
 
 		if (sensor.TocandoBase())
 		{
 			percepcionActual = Percepcion.TocandoBase;
 			Debug.Log("Tocando Base");
 		}
-
-		//if (!sensor.TocandoBase())
-		//{
-		//	percepcionActual = Percepcion.NoTocandoBase;
-		//	Debug.Log("No tocando base");
-		//}
-
+		
 		return percepcionActual;
 	}
 	

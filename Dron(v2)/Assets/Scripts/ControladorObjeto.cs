@@ -23,10 +23,10 @@ public class ControladorObjeto : MonoBehaviour
         rb.AddForce(movement * speed);
     }
 
-    void OnCollisionEnter(Collision other)
+    /*void OnCollisionEnter(Collision other)
     {
         if (other.gameObject.CompareTag("Pared"))
             Debug.Log("Tocando pared");
-    }
+    }*/
     
 }
