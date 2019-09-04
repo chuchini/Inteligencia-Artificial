@@ -38,7 +38,8 @@ public class ComportamientoAutomatico : MonoBehaviour
 		Detenerse	= 2,
 		Girar		= 3,
 		Retornar	= 4,
-		Cargarse	= 5
+		Cargarse	= 5,
+		Ascender	= 6
 	}
 
 	private Estado estadoActual;
@@ -61,11 +62,13 @@ public class ComportamientoAutomatico : MonoBehaviour
 		{
 			return;
 		}
-		else if (sensor.Bateria() <= 50)
+		
+		if (sensor.Bateria() <= 50)
 		{
 			float distCovered = (Time.time - startTime) * speed;
 			float fracJourney = distCovered / journeyLength;
 			transform.position = Vector3.Lerp(sensor.Ubicacion(), sensor.UbicacionBase(), fracJourney);
+			Debug.Log("Estoy atorado aqui");
 		}
 
 		percepcionActual = PercibirMundo();
@@ -152,7 +155,14 @@ public class ComportamientoAutomatico : MonoBehaviour
 						//}
 						//else
 						//{
+						if (sensor.CercaDePared() == false && sensor.CercaDeObjeto() == false)
+						{
 							estado = Estado.Avanzar;
+						}
+						else if ((sensor.CercaDePared() == true || sensor.CercaDeObjeto() == true))
+						{
+							estado = Estado.Detenerse;
+						}
 						//}
 						break;
 				}
@@ -495,6 +505,16 @@ public class ComportamientoAutomatico : MonoBehaviour
 						break;
 					case Percepcion.TocandoBase:
 						estado = Estado.Cargarse;
+						if (sensor.Bateria() < sensor.BateriaMaxima())
+						{
+							estado = Estado.Cargarse;
+							Debug.Log("Estoy atorado aqui 3");
+						}
+						else
+						{
+							Debug.Log("Ya no ocupo carga");
+							estado = Estado.Ascender;
+						}
 						break;
 					case Percepcion.NoTocandoBase:
 						estado = Estado.Retornar;
@@ -503,6 +523,7 @@ public class ComportamientoAutomatico : MonoBehaviour
 						if (sensor.Bateria() < sensor.BateriaMaxima())
 						{
 							estado = Estado.Cargarse;
+							Debug.Log("Estoy atorado aqui 2");
 						}
 						else
 						{
@@ -512,6 +533,18 @@ public class ComportamientoAutomatico : MonoBehaviour
 						break;
 				}
 				break;
+			
+			case Estado.Ascender:
+				if (transform.position.y >= 1.83)
+				{
+					estado = Estado.Detenerse;
+				}
+				else
+				{
+					estado = Estado.Ascender;
+				}
+				break;
+			
 		}
 
 		return estado;
@@ -549,8 +582,18 @@ public class ComportamientoAutomatico : MonoBehaviour
 
 	void Cargarse()
 	{
-		actuador.Detener();
+		actuador.Flotar();
 		actuador.CargarBateria();
+	}
+
+	void Ascender()
+	{
+		if (transform.position.y >= 1.84)
+		{
+			actuador.Detener();
+		}
+		else
+			actuador.Ascender();
 	}
 	
 	
@@ -653,6 +696,9 @@ public class ComportamientoAutomatico : MonoBehaviour
 				break;
 			case Estado.Cargarse:
 				Cargarse();
+				break;
+			case Estado.Ascender:
+				Ascender();
 				break;
 			default: 
 				Detenerse(); 

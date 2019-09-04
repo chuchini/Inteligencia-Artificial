@@ -28,7 +28,7 @@ public class Actuadores : MonoBehaviour
     // es que serán usados por otro componente (Controlador)
 
     public void Ascender(){
-        upForce = 100;
+        upForce = 99.5f;
         rb.AddRelativeForce(Vector3.up * upForce);
     }
 
