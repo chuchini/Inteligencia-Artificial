@@ -30,8 +30,7 @@ public class Radar : MonoBehaviour
     }
 
     void OnTriggerStay(Collider other){
-	cercaDeObjeto = false;
-	cercaDePared = false;
+	
         if(other.gameObject.CompareTag("Objeto"))
         {
             cercaDeObjeto = true;
@@ -41,8 +40,6 @@ public class Radar : MonoBehaviour
         {
             cercaDePared = true;
         }
-	    
-	
         
         //if (other.gameObject.CompareTag("BaseDeCarga"))
         //{

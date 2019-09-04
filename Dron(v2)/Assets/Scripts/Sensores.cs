@@ -44,8 +44,6 @@ public class Sensores : MonoBehaviour
     }
 
     void OnCollisionStay(Collision other){
-	tocandoPared = false;
-	tocandoBase = false;
         if(other.gameObject.CompareTag("Pared")){
             tocandoPared = true;
         }
