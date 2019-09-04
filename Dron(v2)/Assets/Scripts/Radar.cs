@@ -23,11 +23,11 @@ public class Radar : MonoBehaviour
             cercaDePared = true;
         }
 
-        if (other.gameObject.CompareTag("BaseDeCarga"))
-        {
-            cercaDeBaseDeCarga = true;
-        }
-}
+        //if (other.gameObject.CompareTag("BaseDeCarga"))
+        //{
+        //    cercaDeBaseDeCarga = true;
+        //}
+    }
 
     void OnTriggerStay(Collider other){
 	
@@ -41,10 +41,10 @@ public class Radar : MonoBehaviour
             cercaDePared = true;
         }
         
-        if (other.gameObject.CompareTag("BaseDeCarga"))
-        {
-            cercaDeBaseDeCarga = true;
-        }
+        //if (other.gameObject.CompareTag("BaseDeCarga"))
+        //{
+        //    cercaDeBaseDeCarga = true;
+        //}
     }
 
     void OnTriggerExit(Collider other){
@@ -55,10 +55,10 @@ public class Radar : MonoBehaviour
             cercaDePared = false;
         }
 
-        if (other.gameObject.CompareTag("BaseDeCarga"))
-        {
-            cercaDeBaseDeCarga = false;
-        }
+        //if (other.gameObject.CompareTag("BaseDeCarga"))
+        //{
+        //    cercaDeBaseDeCarga = false;
+        //}
     }
 
     public bool CercaDePared(){
@@ -70,7 +70,7 @@ public class Radar : MonoBehaviour
         return cercaDeObjeto;
     }
     
-    void Update(){
-        cercaDeObjeto=false; 
-    }
+    //void Update(){
+    //    cercaDeObjeto=false; 
+    //}
 }

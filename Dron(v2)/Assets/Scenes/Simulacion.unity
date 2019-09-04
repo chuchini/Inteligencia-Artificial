@@ -859,7 +859,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b0b22a61736ae3dea1d5ec334b22d4b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  longitudDeRayo: 5
+  longitudDeRayo: 7
 --- !u!1 &1007230710
 GameObject:
   m_ObjectHideFlags: 0
@@ -915,7 +915,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 5
+  m_Radius: 8
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1169327610
 GameObject:
@@ -960,7 +960,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2eeaea8df69ac5cc899e5c57b3f16be5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bateria: 70
+  bateria: 90
   capacidadMaximaBateria: 120
   velocidadDeCarga: 5
 --- !u!1 &1227367855
@@ -1703,7 +1703,7 @@ PrefabInstance:
     - target: {fileID: 8589885789789592836, guid: 82d4061087a07c4a7ae040b3ccee15d3,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 13.04
+      value: 8.27
       objectReference: {fileID: 0}
     - target: {fileID: 8589885789789592836, guid: 82d4061087a07c4a7ae040b3ccee15d3,
         type: 3}

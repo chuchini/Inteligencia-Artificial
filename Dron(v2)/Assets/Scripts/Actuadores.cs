@@ -9,7 +9,7 @@ public class Actuadores : MonoBehaviour
     private Sensores sensor; // Componente adicional (script) para obtener información de los sensores
 
     private float upForce; // Indica la fuerza de elevación del dron
-    private float movementForwardSpeed = 30.0f; // Escalar para indicar fuerza de movimiento frontal
+    private float movementForwardSpeed = 10.0f; // Escalar para indicar fuerza de movimiento frontal
     private float wantedYRotation; // Auxiliar para el cálculo de rotación
     private float currentYRotation; // Auxiliar para el cálculo de rotación
     private float rotateAmountByKeys = 2.5f; // Auxiliar para el cálculo de rotación

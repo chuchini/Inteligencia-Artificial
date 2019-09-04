@@ -9,7 +9,7 @@ public class ComportamientoAutomatico : MonoBehaviour
 	private Sensores sensor;
 	private Actuadores actuador;
 
-	private float speed = 0.003F;
+	private float speed = 0.001F;
 
 	private float startTime;
 
@@ -26,9 +26,9 @@ public class ComportamientoAutomatico : MonoBehaviour
 		NoFrenteAObjeto	= 6,
 		NoCercaDeObjeto	= 7,
 		BateriaBaja		= 8,
-		NoBateriaBaja	= 9,
-		TocandoBase		= 10,
-		NoTocandoBase	= 11,
+		//NoBateriaBaja	= 9,
+		TocandoBase		= 9,
+		//NoTocandoBase	= 11
 	}
 
 	private enum Estado
@@ -129,42 +129,37 @@ public class ComportamientoAutomatico : MonoBehaviour
 						estado = Estado.Retornar;
 						break;
 					case Percepcion.TocandoBase:
-						if (sensor.Bateria() > 50)
-						{
-							estado = Estado.Avanzar;
-						}
-						else
-						{
-							estado = Estado.Cargarse;
-						}
+						estado = Estado.Cargarse;
 						break;
-					case Percepcion.NoTocandoBase:
-						if (sensor.Bateria() > 50)
-						{
-							estado = Estado.Avanzar;
-						}
-						else
-						{
-							estado = Estado.Retornar;
-						}
-						break;
-					case Percepcion.NoBateriaBaja:
+					//case Percepcion.NoTocandoBase:
+					//	if (sensor.Bateria() > 50)
+					//	{
+					//	estado = Estado.Avanzar;
+					//	Debug.Log("Me meti aqui");
+							
+					//	}
+					//	else
+					//	{
+					//		estado = Estado.Retornar;
+					//	}
+					//	break;
+					//case Percepcion.NoBateriaBaja:
 						//if (sensor.Bateria() < sensor.BateriaMaxima())
 						//{
 						//	estado = Estado.Cargarse;
 						//}
 						//else
 						//{
-						if (sensor.CercaDePared() == false && sensor.CercaDeObjeto() == false)
-						{
-							estado = Estado.Avanzar;
-						}
-						else if ((sensor.CercaDePared() == true || sensor.CercaDeObjeto() == true))
-						{
-							estado = Estado.Detenerse;
-						}
+					//	if (sensor.CercaDeObjeto() == false)
+					//	{
+					//		estado = Estado.Avanzar;
+					//	}
+					//	else //if (sensor.CercaDeObjeto() == true)
+					//	{
+					//		estado = Estado.Detenerse;
+					//	}
 						//}
-						break;
+					//	break;
 				}
 				break;
 			
@@ -193,6 +188,7 @@ public class ComportamientoAutomatico : MonoBehaviour
 					//	if (sensor.CercaDePared() == false)
 					//	{
 							estado = Estado.Avanzar;
+					
 					//	}
 					//	else
 					//	{
@@ -201,9 +197,10 @@ public class ComportamientoAutomatico : MonoBehaviour
 						break;
 					case Percepcion.FrenteAObjeto:
 						estado = Estado.Detenerse;
+						Debug.Log("Me meti aqui");
 						break;
 					case Percepcion.NoFrenteAObjeto:
-						estado = Estado.Girar;
+						estado = sensor.CercaDeObjeto() == false ? Estado.Avanzar : Estado.Girar;
 						break;
 					case Percepcion.BateriaBaja:
 						estado = Estado.Retornar;
@@ -211,33 +208,34 @@ public class ComportamientoAutomatico : MonoBehaviour
 					case Percepcion.TocandoBase:
 						if (sensor.Bateria() > 50)
 						{
-							estado = Estado.Avanzar;
+							estado = Estado.Ascender;
 						}
 						else
 						{
 							estado = Estado.Cargarse;
 						}
 						break;
-					case Percepcion.NoTocandoBase:
-						if (sensor.Bateria() > 50)
-						{
-							estado = Estado.Avanzar;
-						}
-						else
-						{
-							estado = Estado.Retornar;
-						}
-						break;
-					case Percepcion.NoBateriaBaja:
+					//case Percepcion.NoTocandoBase:
+					//	if (sensor.Bateria() > 50)
+					//	{
+					//		estado = Estado.Avanzar;
+					//	}
+					//	else
+					//	{
+					//		estado = Estado.Retornar;
+					//	}
+					//	break;
+					//case Percepcion.NoBateriaBaja:
 						//if (sensor.Bateria() < sensor.BateriaMaxima())
 						//{
 						//	estado = Estado.Cargarse;
 						//}
 						//else
 						//{
-						estado = Estado.Avanzar;
+					//	estado = Estado.Avanzar;
+					//	Debug.Log("Me meti aqui");
 					//}
-					break;
+					//break;
 					
 				}
 				break;
@@ -290,35 +288,21 @@ public class ComportamientoAutomatico : MonoBehaviour
 						estado = Estado.Retornar;
 						break;
 					case Percepcion.TocandoBase:
-						if (sensor.Bateria() > 50)
-						{
-							estado = Estado.Avanzar;
-						}
-						else
-						{
-							estado = Estado.Cargarse;
-						}
+						estado = sensor.Bateria() > 50 ? Estado.Avanzar : Estado.Cargarse;
 						break;
-					case Percepcion.NoTocandoBase:
-						if (sensor.Bateria() > 50)
-						{
-							estado = Estado.Avanzar;
-						}
-						else
-						{
-							estado = Estado.Retornar;
-						}
-						break;
-					case Percepcion.NoBateriaBaja:
+					//case Percepcion.NoTocandoBase:
+					//	estado = sensor.Bateria() > 50 ? Estado.Avanzar : Estado.Retornar;
+					//	break;
+					//case Percepcion.NoBateriaBaja:
 						//if (sensor.Bateria() < sensor.BateriaMaxima())
 						//{
 						//	estado = Estado.Cargarse;
 						//}
 						//else
 						//{
-						estado = Estado.Avanzar;
+					//	estado = Estado.Avanzar;
 					//}
-					break;
+					//break;
 				}
 				break;
 			
@@ -358,48 +342,27 @@ public class ComportamientoAutomatico : MonoBehaviour
 						estado = Estado.Detenerse;
 						break;
 					case Percepcion.NoFrenteAObjeto:
-						if (sensor.CercaDeObjeto() == false)
-						{
-							estado = Estado.Retroceder;
-						}
-						else
-						{
-							estado = Estado.Detenerse;
-						}
+						estado = sensor.CercaDeObjeto() == false ? Estado.Retroceder : Estado.Detenerse;
 						break;
 					case Percepcion.BateriaBaja:
 						estado = Estado.Retornar;
 						break;
 					case Percepcion.TocandoBase:
-						if (sensor.Bateria() > 50)
-						{
-							estado = Estado.Avanzar;
-						}
-						else
-						{
-							estado = Estado.Cargarse;
-						}
+						estado = sensor.Bateria() > 50 ? Estado.Avanzar : Estado.Cargarse;
 						break;
-					case Percepcion.NoTocandoBase:
-						if (sensor.Bateria() > 50)
-						{
-							estado = Estado.Avanzar;
-						}
-						else
-						{
-							estado = Estado.Retornar;
-						}
-						break;
-					case Percepcion.NoBateriaBaja:
+					//case Percepcion.NoTocandoBase:
+					//	estado = sensor.Bateria() > 50 ? Estado.Avanzar : Estado.Retornar;
+					//	break;
+					//case Percepcion.NoBateriaBaja:
 						//if (sensor.Bateria() < sensor.BateriaMaxima())
 						//{
 						//	estado = Estado.Cargarse;
 						//}
 						//else
 						//{
-						estado = Estado.Avanzar;
+					//	estado = Estado.Avanzar;
 					//}
-					break;
+					//break;
 					
 				}
 				break;
@@ -438,35 +401,21 @@ public class ComportamientoAutomatico : MonoBehaviour
 						estado = Estado.Retornar;
 						break;
 					case Percepcion.TocandoBase:
-						if (sensor.Bateria() > 50)
-						{
-							estado = Estado.Avanzar;
-						}
-						else
-						{
-							estado = Estado.Cargarse;
-						}
+						estado = sensor.Bateria() > 50 ? Estado.Avanzar : Estado.Cargarse;
 						break;
-					case Percepcion.NoTocandoBase:
-						if (sensor.Bateria() > 50)
-						{
-							estado = Estado.Avanzar;
-						}
-						else
-						{
-							estado = Estado.Retornar;
-						}
-						break;
-					case Percepcion.NoBateriaBaja:
+					//case Percepcion.NoTocandoBase:
+					//	estado = sensor.Bateria() > 50 ? Estado.Avanzar : Estado.Retornar;
+					//	break;
+					//case Percepcion.NoBateriaBaja:
 						//if (sensor.Bateria() < sensor.BateriaMaxima())
 						//{
 						//	estado = Estado.Cargarse;
 						//}
 						//else
 						//{
-						estado = Estado.Avanzar;
+					//	estado = Estado.Avanzar;
 					//}
-					break;
+					//break;
 				}
 				break;
 			
@@ -516,33 +465,26 @@ public class ComportamientoAutomatico : MonoBehaviour
 							estado = Estado.Ascender;
 						}
 						break;
-					case Percepcion.NoTocandoBase:
-						estado = Estado.Retornar;
-						break;
-					case Percepcion.NoBateriaBaja:
-						if (sensor.Bateria() < sensor.BateriaMaxima())
-						{
-							estado = Estado.Cargarse;
-							Debug.Log("Estoy atorado aqui 2");
-						}
-						else
-						{
-							Debug.Log("Ya no ocupo carga");
-							estado = Estado.Avanzar;
-						}
-						break;
+					//case Percepcion.NoTocandoBase:
+					//	estado = Estado.Retornar;
+					//	break;
+					//case Percepcion.NoBateriaBaja:
+					//	if (sensor.Bateria() < sensor.BateriaMaxima())
+					//	{
+					//		estado = Estado.Cargarse;
+					//		Debug.Log("Estoy atorado aqui 2");
+					//	}
+					//	else
+					//	{
+					//		Debug.Log("Ya no ocupo carga");
+					//		estado = Estado.Avanzar;
+					//	}
+					//	break;
 				}
 				break;
 			
 			case Estado.Ascender:
-				if (transform.position.y >= 1.83)
-				{
-					estado = Estado.Detenerse;
-				}
-				else
-				{
-					estado = Estado.Ascender;
-				}
+				estado = transform.position.y >= 1.83 ? Estado.Detenerse : Estado.Ascender;
 				break;
 			
 		}
@@ -654,11 +596,11 @@ public class ComportamientoAutomatico : MonoBehaviour
 			Debug.Log("Bateria Baja");
 		}
 		
-		if (sensor.Bateria() > 50)
-		{
-			percepcionActual = Percepcion.NoBateriaBaja;
-			Debug.Log("Bateria No Baja");
-		}
+		//if (sensor.Bateria() > 50)
+		//{
+		//	percepcionActual = Percepcion.NoBateriaBaja;
+		//	Debug.Log("Bateria No Baja");
+		//}
 
 		if (sensor.TocandoBase())
 		{
@@ -666,11 +608,11 @@ public class ComportamientoAutomatico : MonoBehaviour
 			Debug.Log("Tocando Base");
 		}
 
-		if (!sensor.TocandoBase())
-		{
-			percepcionActual = Percepcion.NoTocandoBase;
-			Debug.Log("No tocando base");
-		}
+		//if (!sensor.TocandoBase())
+		//{
+		//	percepcionActual = Percepcion.NoTocandoBase;
+		//	Debug.Log("No tocando base");
+		//}
 
 		return percepcionActual;
 	}
