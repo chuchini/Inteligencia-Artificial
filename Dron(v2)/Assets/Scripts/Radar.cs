@@ -7,10 +7,13 @@ using UnityEngine;
 // Las comprobaciones y métodos son análogos al componente (script) de Sensores.
 public class Radar : MonoBehaviour
 {
+    // Objetos que identificara el radar.
     private bool cercaDeObjeto;
     private bool cercaDePared;
-    private bool cercaDeBaseDeCarga;
 
+    // Los siguientes metodos sirven para que el sensor decida las posibles interacciones con los objetos que detecta
+    // y se le indicaron que detectara. Para saber cuando entra, cuando se mantiene y cuando salen dichos objetos
+    // del radar del dron.
     void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Objeto"))
@@ -22,11 +25,7 @@ public class Radar : MonoBehaviour
         {
             cercaDePared = true;
         }
-
-        //if (other.gameObject.CompareTag("BaseDeCarga"))
-        //{
-        //    cercaDeBaseDeCarga = true;
-        //}
+        
     }
 
     void OnTriggerStay(Collider other){
@@ -40,11 +39,6 @@ public class Radar : MonoBehaviour
         {
             cercaDePared = true;
         }
-        
-        //if (other.gameObject.CompareTag("BaseDeCarga"))
-        //{
-        //    cercaDeBaseDeCarga = true;
-        //}
     }
 
     void OnTriggerExit(Collider other){
@@ -54,23 +48,23 @@ public class Radar : MonoBehaviour
         if(other.gameObject.CompareTag("Pared")){
             cercaDePared = false;
         }
-
-        //if (other.gameObject.CompareTag("BaseDeCarga"))
-        //{
-        //    cercaDeBaseDeCarga = false;
-        //}
+        
     }
 
+    /// <summary>
+    /// Metodo que indica si el dron esta cerca o no de la pared por medio del sensor
+    /// </summary>
+    /// <returns>true, si el dron esta cerca de la pared, false en caso contrario</returns>
     public bool CercaDePared(){
         return cercaDePared;
     }
-
+    
+    /// <summary>
+    /// Metodo que indica si el dron esta cerca o no del objeto por medio del sensor.
+    /// </summary>
+    /// <returns>true, si el dron esta cerca del objeto, false en caso contrario</returns>
     public bool CercaDeObjeto()
     {
         return cercaDeObjeto;
     }
-    
-    //void Update(){
-    //    cercaDeObjeto=false; 
-    //}
 }

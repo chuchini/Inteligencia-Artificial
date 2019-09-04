@@ -67,7 +67,9 @@ public class Sensores : MonoBehaviour
 
     // ========================================
     // Los siguientes métodos definidos son públicos, la intención
-    // es que serán usados por otro componente (Controlador)
+    // es que serán usados por otro componente (Controlador) y, como el mismo
+    // nombre lo indica, indican si se realiza dicha accion con un valor booleano. O
+    // regresan el valor que se les esta pidiendo.
 
     public bool TocandoPared(){
         return tocandoPared;

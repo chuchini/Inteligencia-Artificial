@@ -5,16 +5,26 @@ using UnityEngine;
 
 public class ComportamientoAutomatico : MonoBehaviour
 {
+	// Componente adicional para obtener informacon de los sensores.
+	private Sensores sensor; 
+	
+	// Componente adicional para obtener informacion de los actuadores.
+	private Actuadores actuador; 
+	
+	// Velocidad que sera utilizada durante el retorno del dron a la base de carga.
+	private float speed = 0.001F; 
+	
+	// Variable que servira para conocer el tiempo inicial una vez que el dron deba regresar a la base
+	private float startTime; 
 
-	private Sensores sensor;
-	private Actuadores actuador;
-
-	private float speed = 0.001F;
-
-	private float startTime;
-
+	// Variable que servira para guardar la distancia que habra entre el dron y la base de carga, segun el punto
+	// donde se encuentre el dron en dicho instante.
 	private float journeyLength;
 	
+	/*
+	 * Percepciones que el dron "tendrá", sirven para conocer el mundo y poder tomar una decicion para cambiar de
+	 * estado dentro de la maquina de estados.
+	 */
 	private enum Percepcion
 	{
 		CercaDePared	= 0,
@@ -23,14 +33,15 @@ public class ComportamientoAutomatico : MonoBehaviour
 		NoFrenteAPared	= 3,
 		CercaDeObjeto	= 4,
 		FrenteAObjeto	= 5,
-		NoFrenteAObjeto	= 6,
-		NoCercaDeObjeto	= 7,
-		BateriaBaja		= 8,
-		//NoBateriaBaja	= 9,
-		TocandoBase		= 9,
-		//NoTocandoBase	= 11
+		NoCercaDeObjeto	= 6,
+		BateriaBaja		= 7,
+		TocandoBase		= 8
 	}
 
+	/**
+	 * Conjunto de estados que forman parte de la maquina de estados y
+	 * a los cuales puede moverse el dron con base a las percepciones.
+	 */
 	private enum Estado
 	{
 		Avanzar		= 0,
@@ -41,7 +52,7 @@ public class ComportamientoAutomatico : MonoBehaviour
 		Cargarse	= 5,
 		Ascender	= 6
 	}
-
+	
 	private Estado estadoActual;
 	private Percepcion percepcionActual;
 
@@ -50,19 +61,30 @@ public class ComportamientoAutomatico : MonoBehaviour
 		sensor = GetComponent<Sensores>();
 		actuador = GetComponent<Actuadores>();
 		estadoActual = Estado.Avanzar;
-
-		startTime = Time.time;
 		
+		// Guardamos el tiempo en la variable de startTime.
+		startTime = Time.time;
+		// Calculamos la distancia que hay entre la ubicacion del dron (sensor.Ubicacion()) y la
+		// ubicacion de la base de carga (sensor.UbicacionBase()).
 		journeyLength = Vector3.Distance(sensor.Ubicacion(), sensor.UbicacionBase());
 	}
 
 	void FixedUpdate()
 	{
+		// Si por alguna razon la bateria no se carga y esta llega a 0, el dron se detiene y no realiza
+		// ya ninguna accion.
 		if (sensor.Bateria() <= 0)
 		{
 			return;
 		}
 		
+		// Una vez que el dron detecta un nivel de bateria bajo, 30 para nuestro caso, inicia el retorno hacia la base
+		// de carga, usando la funcion auxiliar de Lerp que se encarga de hacer una interpolacion entre un vector
+		// que representa una posicion inicial, la ubicacion del dron para nuestro caso, y otro vector que represente
+		// la posicion final, la ubicacion de la base de carga para nosotros. Gracias a esto, Lerp realiza movimientos
+		// suavizados para que no parezca que el dron se teletransporta.
+		// Hacer uso de este metodo es valido ya que desde un principio el dron tiene conocimiento de donde se encuentra
+		// su base de carga.
 		if (sensor.Bateria() <= 50)
 		{
 			float distCovered = (Time.time - startTime) * speed;
@@ -76,6 +98,13 @@ public class ComportamientoAutomatico : MonoBehaviour
 		AplicarEstado(estadoActual);
 	}
 
+	// A partir de este punto se representa un agente basado en modelos.
+	// La idea es similar a crear una máquina de estados finita donde se hacen las siguientes consideraciones:
+	// - El alfabeto es un conjunto predefinido de percepciones hechas con sensores del agente
+	// - El conjunto de estados representa un conjunto de métodos con acciones del agente
+	// - La función de transición es un método
+	// - El estado inicial se inicializa en Start()
+	// - El estado final es opcional
 	Estado TablaDeTransicion(Estado estado, Percepcion percepcion)
 	{
 		switch (estado)
@@ -107,6 +136,8 @@ public class ComportamientoAutomatico : MonoBehaviour
 					case Percepcion.FrenteAObjeto:
 						estado = Estado.Detenerse;
 						break;
+					
+					// COMPORTAMIENTO CON BASE A LAS PERCEPCIONES DE LA BATERIA
 					case Percepcion.BateriaBaja:
 						estado = Estado.Retornar;
 						break;
@@ -143,6 +174,8 @@ public class ComportamientoAutomatico : MonoBehaviour
 					case Percepcion.FrenteAObjeto:
 						estado = Estado.Detenerse;
 						break;
+					
+					// COMPORTAMIENTO CON BASE A LAS PERCEPCIONES DE LA BATERIA
 					case Percepcion.BateriaBaja:
 						estado = Estado.Retornar;
 						break;
@@ -179,6 +212,8 @@ public class ComportamientoAutomatico : MonoBehaviour
 					case Percepcion.FrenteAObjeto:
 						estado = Estado.Detenerse;
 						break;
+					
+					// COMPORTAMIENTO CON BASE A LAS PERCEPCIONES DE LA BATERIA
 					case Percepcion.BateriaBaja:
 						estado = Estado.Retornar;
 						break;
@@ -217,6 +252,8 @@ public class ComportamientoAutomatico : MonoBehaviour
 					case Percepcion.FrenteAObjeto:
 						estado = Estado.Detenerse;
 						break;
+					
+					// COMPORTAMIENTO CON BASE A LAS PERCEPCIONES DE LA BATERIA
 					case Percepcion.BateriaBaja:
 						estado = Estado.Retornar;
 						break;
@@ -254,6 +291,8 @@ public class ComportamientoAutomatico : MonoBehaviour
 					case Percepcion.FrenteAObjeto:
 						estado = Estado.Retornar;
 						break;
+					
+					// COMPORTAMIENTO CON BASE A LAS PERCEPCIONES DE LA BATERIA
 					case Percepcion.BateriaBaja:
 						estado = Estado.Retornar;
 						break;
@@ -290,6 +329,8 @@ public class ComportamientoAutomatico : MonoBehaviour
 					case Percepcion.FrenteAObjeto:
 						estado = Estado.Retornar;
 						break;
+					
+					// COMPORTAMIENTO CON BASE A LAS PERCEPCIONES DE LA BATERIA
 					case Percepcion.BateriaBaja:
 						estado = Estado.Retornar;
 						break;
@@ -309,6 +350,13 @@ public class ComportamientoAutomatico : MonoBehaviour
 		return estado;
 	}
 
+	/// <summary>
+	/// Los siguientes metodos sirven para aplicar las acciones relacionadas al mismo nombre del metodo,
+	/// todos aplican el estado de flotar para que el dron no se caiga o ascienda al "infinito".
+	///
+	/// El metodo de Retornar() detiene todas las acciones del dron mientras la funcion de Vector3.Lerp() regresa al
+	/// dron a la base de carga y evitar que otros movimientos del dron interfieran durante el proceso.
+	/// </summary>
 	void Avanzar()
 	{ 
 		actuador.Flotar();
@@ -347,6 +395,8 @@ public class ComportamientoAutomatico : MonoBehaviour
 
 	void Ascender()
 	{
+		// Nos apoyamos en que el dron no puede superar una altura
+		// y evitar que se eleve mas de lo que deseamos.
 		if (transform.position.y >= 1.84)
 		{
 			actuador.Detener();
@@ -356,62 +406,48 @@ public class ComportamientoAutomatico : MonoBehaviour
 	}
 	
 	
+	/// <summary>
+	/// Dentro de este metodo se contemplan todas las percepciones que tiene el dron y con base a ellas
+	/// se mueve dentro de la maquina de estados. 
+	/// </summary>
+	/// <returns>percepcionActual, la percepcion del mundo que tiene el dron</returns>
 	Percepcion PercibirMundo() 
 	{ 
+		// La percepcion inicial que el dron tiene.
 		Percepcion percepcionActual = Percepcion.NoCercaDePared;
-		if (sensor.CercaDePared())
-		{
-			percepcionActual = Percepcion.CercaDePared;
-			Debug.Log("Cerca de Pared");
-		}
-                         
-		if (sensor.FrenteAPared()) 
-		{
-			percepcionActual = Percepcion.FrenteAPared; 
-			Debug.Log("Frente a Pared");
-		}
-                                
-		if (!sensor.FrenteAPared())
-		{ 
-			percepcionActual = Percepcion.NoFrenteAPared; 
-			Debug.Log("No Frente a Pared");
-		}
-
-		if (!sensor.CercaDePared())
-		{
-			percepcionActual = Percepcion.NoCercaDePared;
-			Debug.Log("No Cerca de Pared!");
-		}
-
 		
+		if (sensor.CercaDePared())
+			percepcionActual = Percepcion.CercaDePared;
 
+		if (sensor.FrenteAPared())
+			percepcionActual = Percepcion.FrenteAPared;
+		
+		if (!sensor.FrenteAPared())
+			percepcionActual = Percepcion.NoFrenteAPared;
+		
+		if (!sensor.CercaDePared())
+			percepcionActual = Percepcion.NoCercaDePared;
+		
 		if (sensor.CercaDeObjeto())
-		{
 			percepcionActual = Percepcion.CercaDeObjeto;
-			Debug.Log("Cerca de Objeto");
-		}
 
 		if (sensor.FrenteAObjeto())
-		{
 			percepcionActual = Percepcion.FrenteAObjeto;
-			Debug.Log("Frente a Objeto");
-		}
-
+		
 		if (sensor.Bateria() < 50)
-		{
 			percepcionActual = Percepcion.BateriaBaja;
-			Debug.Log("Bateria Baja");
-		}
 
 		if (sensor.TocandoBase())
-		{
 			percepcionActual = Percepcion.TocandoBase;
-			Debug.Log("Tocando Base");
-		}
-		
+
 		return percepcionActual;
 	}
 	
+	/// <summary>
+	/// Segun el estado que se indique, el dron aplicara una accion la cual se encuentra definida en los metodos del
+	/// mismo nombre que el estado.
+	/// </summary>
+	/// <param name="estado">El estado actual</param>
 	void AplicarEstado(Estado estado) 
 	{ 
 		switch (estado) 

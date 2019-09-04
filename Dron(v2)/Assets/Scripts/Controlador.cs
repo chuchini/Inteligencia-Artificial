@@ -1,7 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+/// <summary>
+/// Clase que sirve para manejar al dron de manera manual y probar los actuadores, no es necesaria
+/// para el comportamiento automatico pero se mantiene la clase para futuras pruebas y comodidad.
+/// </summary>
 public class Controlador : MonoBehaviour
 {
     // Idealmente sólo se requiere de sensores y actuadores para programar el comportamiento
@@ -56,7 +59,5 @@ public class Controlador : MonoBehaviour
             Debug.Log("Frente a pared!");
         if(Input.GetKey(KeyCode.F))
             actuador.Detener();
-        //if(Input.GetKey(KeyCode.G))
-          //  Debug.Log(sensor.Ubicacion());
     }
 }

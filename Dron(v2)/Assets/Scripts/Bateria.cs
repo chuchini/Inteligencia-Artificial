@@ -15,13 +15,18 @@ public class Bateria : MonoBehaviour
             bateria -= Time.deltaTime;
     }
 
-    // ========================================
-    // Métodos públicos que podrán ser utilizados por otros componentes (scripts):
+    /**
+     * Metodo que se encarga de realizar la carga de la bateria dependiendo de la
+     * velocidad de la carga y por el transcurso del tiempo desde que se inicia la carga.
+     */
     public void Cargar(){
         if(bateria < capacidadMaximaBateria)
             bateria += Time.deltaTime * velocidadDeCarga;
     }
 
+    /**
+     * Metodo para saber el nivel actual de la bateria.
+     */
     public float NivelDeBateria(){
         return bateria;
     }

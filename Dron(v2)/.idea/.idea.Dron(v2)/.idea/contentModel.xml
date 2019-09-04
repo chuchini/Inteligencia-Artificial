@@ -10,7 +10,6 @@
           <e p="Actuadores.cs" t="Include" />
           <e p="Bateria.cs" t="Include" />
           <e p="ComportamientoAutomatico.cs" t="Include" />
-          <e p="ComportamientoEstados.cs" t="Include" />
           <e p="Controlador.cs" t="Include" />
           <e p="ControladorObjeto.cs" t="Include" />
           <e p="Radar.cs" t="Include" />

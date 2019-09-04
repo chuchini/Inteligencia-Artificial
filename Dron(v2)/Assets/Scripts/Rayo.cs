@@ -47,11 +47,18 @@ public class Rayo : MonoBehaviour
         }
     }
 
-    // Ejemplo de métodos públicos que podrán usar otros componentes (scripts):
+    /// <summary>
+    /// Metodo que indica si el dron esta enfrente de la pared por medio del rayo.
+    /// </summary>
+    /// <returns>true, en caso de que si este enfrente, false en caso contrario</returns>
     public bool FrenteAPared(){
         return frenteAPared; 
     }
 
+    /// <summary>
+    /// Metodo que indica si el dron esta enfrente del objeto por medio del rayo.
+    /// </summary>
+    /// <returns>true, en caso de que si esta enfrente, false en caso contrario</returns>
     public bool FrenteAObjeto()
     {
         return frenteAObjeto;

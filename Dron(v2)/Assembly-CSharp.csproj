@@ -59,7 +59,6 @@
      <Compile Include="Assets\Scripts\Actuadores.cs" />
      <Compile Include="Assets\Scripts\Bateria.cs" />
      <Compile Include="Assets\Scripts\ComportamientoAutomatico.cs" />
-     <Compile Include="Assets\Scripts\ComportamientoEstados.cs" />
      <Compile Include="Assets\Scripts\Controlador.cs" />
      <Compile Include="Assets\Scripts\ControladorObjeto.cs" />
      <Compile Include="Assets\Scripts\Radar.cs" />

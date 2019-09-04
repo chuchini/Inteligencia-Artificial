@@ -1,7 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+/// <summary>
+/// Clase que sirve para mover al objeto que el dron va a perseguir, es mas comodo
+/// dejar el movimiento del objeto libre para que el usuario interactue de la forma que quiera.
+/// </summary>
 public class ControladorObjeto : MonoBehaviour
 {
 
@@ -12,7 +15,10 @@ public class ControladorObjeto : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
     }
-
+    
+    /// <summary>
+    /// Aqui es donde se actualiza el movimiento con base a las teclas que precione el usuario (las teclas de direccion).
+    /// </summary>
     void Update()
     {
         float moveHorizontal = Input.GetAxis("Horizontal");
@@ -22,11 +28,4 @@ public class ControladorObjeto : MonoBehaviour
 
         rb.AddForce(movement * speed);
     }
-
-    /*void OnCollisionEnter(Collision other)
-    {
-        if (other.gameObject.CompareTag("Pared"))
-            Debug.Log("Tocando pared");
-    }*/
-    
 }
